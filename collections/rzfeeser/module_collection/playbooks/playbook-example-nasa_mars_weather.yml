@@ -1,0 +1,13 @@
+- name: mars weather
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  collections:
+      - rzfeeser.nasa_api   # required include this collection in Ansible's search space
+      
+  tasks:
+  - name: Pull Mars weather
+    nasa_mars_weather:
+      name: 2021-04-27-marsweather   # the module adds *.txt to the file name
+      apikey: "{{ apikey }}" # this is available from api.nasa.gov
